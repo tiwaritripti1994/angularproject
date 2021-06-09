@@ -1,0 +1,24 @@
+<ul>
+  <li *ngFor="let countries of countryVal;let i = index" class="icon_down"  [ngClass] = "{'icon_up':show,'icon_down':!show}">
+    <span (click)="togglenode[i] = !togglenode[i]" (click)="expand()">{{countries.name | titlecase }} ({{zonecount}})</span>
+    <ul *ngIf="togglenode[i]">
+      <li *ngFor="let zoneval of countries.values" >
+        <ul>
+          <li *ngFor="let zone of zoneval.values;let n = index" class="icon_down" [ngClass] = "{'icon_up':toggle[n],'icon_down':!toggle[n]}" >
+          <span (click)="toggle[n] = !toggle[n]">{{zone.name | titlecase}} ({{zoneval.values.length}})</span> 
+             <ul *ngIf="toggle[n]">
+              <li *ngFor="let states of zone.values">
+               <ul>
+                 <li *ngFor="let stname of states.values | orderBy:'stname'" >
+                    {{stname.name | titlecase }} (Population: {{stname.value[0]['value']}})
+                 </li>
+               </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+   </li>
+  
+</ul>

@@ -3,14 +3,19 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { TreenodeComponent } from './treenode/treenode.component';
+import { HttpClientModule } from '@angular/common/http';
+import { OrderByPipe } from './order-by.pipe';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TreenodeComponent,
+    OrderByPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
